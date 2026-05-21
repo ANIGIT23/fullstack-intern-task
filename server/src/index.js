@@ -11,12 +11,26 @@ const favoriteRoutes = require('./routes/favoriteRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const dataDir = path.join(__dirname, '..', 'data');
+const dbPath =
+  process.env.DATABASE_PATH || path.join(__dirname, '..', 'data', 'database.sqlite');
+const dataDir = path.dirname(dbPath);
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
 
-app.use(cors());
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin) return callback(null, true);
+      const allowed = ['http://localhost:5173', process.env.FRONTEND_URL].filter(Boolean);
+      if (allowed.includes(origin) || /\.up\.railway\.app$/.test(origin)) {
+        return callback(null, true);
+      }
+      callback(null, true);
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.get('/', (req, res) => {

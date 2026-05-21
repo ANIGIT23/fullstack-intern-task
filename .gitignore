@@ -5,3 +5,6 @@ dist/
 client/dist/
 server/data/
 *.sqlite
+
+# Personal notes — not for recruiters / GitHub
+docs-personal/

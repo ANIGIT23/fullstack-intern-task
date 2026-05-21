@@ -122,6 +122,10 @@ VITE_API_URL=http://localhost:5000/api
 
 ---
 
+## Documentation
+
+Technical overview for reviewers: [docs/PROJECT_DOCUMENTATION.md](./docs/PROJECT_DOCUMENTATION.md)
+
 ## License
 
 MIT

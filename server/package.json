@@ -4,7 +4,7 @@
   "description": "Mini SaaS Template Store - Backend API",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "npm run setup && node src/index.js",
     "dev": "nodemon src/index.js",
     "migrate": "knex migrate:latest --knexfile knexfile.js",
     "seed": "knex seed:run --knexfile knexfile.js",
